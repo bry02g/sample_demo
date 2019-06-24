@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>File Uploaders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @file_uploaders.each do |file_uploader| %>
+      <tr>
+        <td><%= link_to 'Show', file_uploader %></td>
+        <td><%= link_to 'Edit', edit_file_uploader_path(file_uploader) %></td>
+        <td><%= link_to 'Destroy', file_uploader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New File Uploader', new_file_uploader_path %>
