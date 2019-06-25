@@ -13,25 +13,48 @@
  *= require_tree .
  *= require_self
  */
-
+html {
+    background-color: whitesmoke;
+}
 .main-body {
     padding: 15px;
+    font-family: "Open Sans";
+    
+    background-color: whitesmoke;
 }
 
 table {
-    border-radius: 10px;
     text-align: center;
     border-collapse: collapse;
+    border-radius: 10px;
+}
+table thead {
+    background-color: #343a40;
+    color: whitesmoke;
     
 }
+table th:first-child {
+    border-top-left-radius: 10px;
+}
+table th:last-child {
+    border-top-right-radius: 10px;
+}
+table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
 .table-borderless th {
     border-collapse: collapse;
-    
 }
 td {
-    background-color: white;
     width: 5px;
+
 }
+
 
 .file-name {
      color: green;
