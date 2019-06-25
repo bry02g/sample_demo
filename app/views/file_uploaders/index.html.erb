@@ -1,11 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>File Uploaders</h1>
+<h1>Files</h1>
 
-<table>
+<table class="table table-dark">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th scope="col" colspan="1">file name</th>
+      <th scope="col" colspan="3">options</th>
     </tr>
   </thead>
 
@@ -15,12 +16,14 @@
 
         <td>
         <% file_uploader.data_file.each do |file|%>
-          <%= file.filename %>
-          <% end %>
+          <span class="file-name"><%= file.filename %></span>
+        <% end %>
         </td>
-        <td><%= link_to 'Show', file_uploader %></td>
-        <td><%= link_to 'Edit', edit_file_uploader_path(file_uploader) %></td>
-        <td><%= link_to 'Destroy', file_uploader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= button_to 'Show', file_uploader, :method=>"get", class: "btn btn-sm btn-light" %>
+        </td>
+        <td><%= button_to 'Edit', edit_file_uploader_path(file_uploader), :method=>"get", class: "btn btn-sm btn-primary" %></td>
+        <td><%= button_to 'Destroy', file_uploader, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"%></td>
       </tr>
     <% end %>
   </tbody>

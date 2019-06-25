@@ -17,3 +17,15 @@
  .main-body {
      padding: 15px;
  }
+.table {
+    text-align: center;
+}
+.table th {
+}
+ .file-name {
+     color: lightgreen;
+ }
+
+
+
+
