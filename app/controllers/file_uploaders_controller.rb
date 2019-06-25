@@ -25,6 +25,7 @@ class FileUploadersController < ApplicationController
   # POST /file_uploaders.json
   def create
     @file_uploader = FileUploader.new(file_uploader_params)
+    
 
     respond_to do |format|
       if @file_uploader.save
@@ -35,7 +36,9 @@ class FileUploadersController < ApplicationController
         format.json { render json: @file_uploader.errors, status: :unprocessable_entity }
       end
     end
-
+    
+    @file_uploader.file_name = FileUploader.last.data_file.blob.key
+    @file_uploader.save
     run_script(FileUploader.last.data_file.blob.key)
   end
 
@@ -84,6 +87,6 @@ class FileUploadersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def file_uploader_params
-      params.require(:file_uploader).permit(:data_file)
+      params.require(:file_uploader).permit(:file_name, :data_file)
     end
 end

@@ -12,6 +12,7 @@
   <tbody>
     <% @file_uploaders.each do |file_uploader| %>
       <tr>
+        <td><%= file_uploader.file_name %></td>
         <td><%= link_to 'Show', file_uploader %></td>
         <td><%= link_to 'Edit', edit_file_uploader_path(file_uploader) %></td>
         <td><%= link_to 'Destroy', file_uploader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
