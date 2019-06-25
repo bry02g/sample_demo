@@ -1,6 +1,8 @@
 #!/bin/bash
 
+echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 echo going to transfer $1 to the remote server and call it $2
+echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
 
 sshpass -p $SAMPLE_PASSWORD scp -P 2222  $1 root@sandbox-hdp.hortonworks.com:~/$2
 

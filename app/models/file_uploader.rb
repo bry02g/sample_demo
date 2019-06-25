@@ -1,3 +1,3 @@
 class FileUploader < ApplicationRecord
-    has_one_attached :data_file
+    has_many_attached :data_file
 end

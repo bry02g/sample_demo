@@ -15,6 +15,7 @@ class FileUploadersController < ApplicationController
   # GET /file_uploaders/new
   def new
     @file_uploader = FileUploader.new
+    
   end
 
   # GET /file_uploaders/1/edit
@@ -25,7 +26,6 @@ class FileUploadersController < ApplicationController
   # POST /file_uploaders.json
   def create
     @file_uploader = FileUploader.new(file_uploader_params)
-    
 
     respond_to do |format|
       if @file_uploader.save
@@ -37,9 +37,9 @@ class FileUploadersController < ApplicationController
       end
     end
     
-    @file_uploader.file_name = FileUploader.last.data_file.blob.key
-    @file_uploader.save
-    run_script(FileUploader.last.data_file.blob.key)
+    FileUploader.last.data_file.each do |file|
+      run_script(file.blob.key, file.filename)
+    end
   end
 
   # PATCH/PUT /file_uploaders/1
@@ -68,14 +68,14 @@ class FileUploadersController < ApplicationController
 
   private
 
-    def run_script(file_name)
+    def run_script(file_name, name)
      
       path = "./storage/#{file_name[0,2]}/#{file_name[2,2]}/#{file_name}"
       
       puts "the path is #{path}"
       puts "starting transfer"
 
-      `./lib/scripts/transfer.sh #{path} rails_upload_#{file_name}.csv`
+      `./lib/scripts/transfer.sh #{path} rails_upload_#{name}`
       puts $?
       puts "file uploaded"
     end
@@ -87,6 +87,6 @@ class FileUploadersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def file_uploader_params
-      params.require(:file_uploader).permit(:file_name, :data_file)
+      params.require(:file_uploader).permit(data_file: [])
     end
 end
