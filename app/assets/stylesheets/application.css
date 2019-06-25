@@ -14,17 +14,30 @@
  *= require_self
  */
 
- .main-body {
-     padding: 15px;
- }
-.table {
+.main-body {
+    padding: 15px;
+}
+
+table {
+    border-radius: 10px;
     text-align: center;
+    border-collapse: collapse;
+    
 }
-.table th {
+.table-borderless th {
+    border-collapse: collapse;
+    
 }
- .file-name {
-     color: lightgreen;
- }
+td {
+    background-color: white;
+    width: 5px;
+}
+
+.file-name {
+     color: green;
+}
+
+
 
 
 

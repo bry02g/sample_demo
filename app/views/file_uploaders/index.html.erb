@@ -2,7 +2,7 @@
 
 <h1>Files</h1>
 
-<table class="table table-dark">
+<table class="table table-borderless table-dark">
   <thead>
     <tr>
       <th scope="col" colspan="1">file name</th>
@@ -20,10 +20,10 @@
         <% end %>
         </td>
         <td>
-          <%= button_to 'Show', file_uploader, :method=>"get", class: "btn btn-sm btn-light" %>
+          <%= link_to 'Show', file_uploader, :method=>"get" %>
         </td>
-        <td><%= button_to 'Edit', edit_file_uploader_path(file_uploader), :method=>"get", class: "btn btn-sm btn-primary" %></td>
-        <td><%= button_to 'Destroy', file_uploader, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger"%></td>
+        <td><%= link_to 'Edit', edit_file_uploader_path(file_uploader), :method=>"get" %></td>
+        <td><%= link_to 'Destroy', file_uploader, method: :delete, data: { confirm: 'Are you sure?' }%></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New File Uploader', new_file_uploader_path %>
+<%= button_to 'New File Uploader', new_file_uploader_path, :method=>"get", class:"btn btn-primary" %>
